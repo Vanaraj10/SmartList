@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Plus, Loader2, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
@@ -38,96 +37,98 @@ export default function CreateForm() {
       [e.target.name]: e.target.value
     }));
   };
-
   if (isSuccess) {
     return (
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="text-center py-8"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
-          className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4"
-        >
-          <CheckCircle className="w-8 h-8 text-green-600" />
-        </motion.div>
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">List Created!</h3>
-        <p className="text-gray-600">Redirecting you to your new list...</p>
-      </motion.div>
+      <div className="text-center py-6 sm:py-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-4 shadow-2xl shadow-green-500/25">
+          <CheckCircle className="w-8 h-8 text-white" />
+        </div>
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-100 mb-2">List Created!</h3>
+        <p className="text-gray-400 text-sm sm:text-base">Redirecting you to your new list...</p>
+        <div className="mt-4 flex justify-center">
+          <div className="w-8 h-1 bg-gradient-to-r from-primary-500 to-green-500 rounded-full"></div>
+        </div>
+      </div>
     );
   }
-
   return (
-    <motion.form
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+    <form
       onSubmit={handleSubmit}
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
     >
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+      <div className="space-y-4 sm:space-y-5">
+        <div className="space-y-2">
+          <label htmlFor="title" className="block text-sm font-medium text-gray-300">
             List Title *
           </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="e.g., Completed Lab 4"
-            className={cn(
-              "input-field",
-              formData.title && "ring-1 ring-green-200 border-green-300"
+          <div className="relative">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="e.g., Completed Lab 4"
+              className={cn(
+                "input-field text-sm sm:text-base transition-colors duration-200",
+                formData.title && "ring-2 ring-primary-500/50 border-primary-500"
+              )}
+              required
+              disabled={isLoading}
+            />
+            {formData.title && (
+              <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+              </div>
             )}
-            required
-            disabled={isLoading}
-          />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-            Description
+        <div className="space-y-2">
+          <label htmlFor="description" className="block text-sm font-medium text-gray-300">
+            Description <span className="text-gray-500">(optional)</span>
           </label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="Optional: Add more details about this list"
-            rows={3}
-            className={cn(
-              "input-field resize-none",
-              formData.description && "ring-1 ring-green-200 border-green-300"
-            )}
-            disabled={isLoading}
-          />
+          <div>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Add more details about this list"
+              rows={3}
+              className={cn(
+                "input-field resize-none text-sm sm:text-base transition-colors duration-200",
+                formData.description && "ring-2 ring-primary-500/50 border-primary-500"
+              )}
+              disabled={isLoading}
+            />
+          </div>
         </div>
       </div>
 
-      <motion.button
+      <button
         type="submit"
         disabled={!formData.title.trim() || isLoading}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className="btn-primary w-full flex items-center justify-center gap-2"
+        className="btn-primary w-full flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base font-semibold py-3 sm:py-4"
       >
         {isLoading ? (
           <>
-            <Loader2 className="w-5 h-5 animate-spin" />
-            Creating List...
+            <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+            Creating...
           </>
         ) : (
           <>
-            <Plus className="w-5 h-5" />
+            <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
             Create List
           </>
         )}
-      </motion.button>
-    </motion.form>
+      </button>
+
+      <div className="text-center">
+        <p className="text-xs sm:text-sm text-gray-500">
+          Your list will be public and shareable instantly
+        </p>
+      </div>
+    </form>
   );
 }

@@ -1,140 +1,63 @@
-import { motion } from 'framer-motion';
-import { ListChecks, Users, Zap, Shield } from 'lucide-react';
+import { ListChecks } from 'lucide-react';
 import CreateForm from '../components/CreateForm';
-import Navbar from '../components/Navbar';
 
 export default function HomePage() {
-  const features = [
-    {
-      icon: ListChecks,
-      title: 'Easy List Creation',
-      description: 'Create public lists in seconds with just a title and description',
-    },
-    {
-      icon: Users,
-      title: 'Real-time Collaboration',
-      description: 'Share your list URL and let others submit their entries instantly',
-    },
-    {
-      icon: Zap,
-      title: 'Lightning Fast',
-      description: 'Built with modern tech stack for optimal performance',
-    },
-    {
-      icon: Shield,
-      title: 'Secure & Reliable',
-      description: 'Your data is safe with enterprise-grade security',
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-blue-50">
-      <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
-            className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6"
-          >
-            <ListChecks className="w-8 h-8 text-primary-600" />
-          </motion.div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Smart<span className="text-gradient">List</span>
-          </h1>
-          
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Create public lists and collect entries from anyone with just a shareable link. 
-            Perfect for attendance, sign-ups, and data collection.
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-dark-925">
+      
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        {/* Main Content */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(100vh-12rem)]">
+            {/* Left Side - Hero Content */}
+          <div className="text-center lg:text-left order-1 lg:order-1 mt-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl mb-6 shadow-2xl shadow-primary-500/25 relative lg:hidden">
+              <ListChecks className="w-8 h-8 text-white" />
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 mb-4 sm:mb-6 tracking-tight">
+              Smart<span className="gradient-text">List</span>
+            </h1>
+            
+            <p className="text-lg sm:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
+              Create public lists and collect entries from anyone with just a shareable link.
+            </p>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Create Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:order-2"
-          >
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 text-xs sm:text-sm text-gray-500">
+              <span className="flex items-center gap-2 px-3 py-1 bg-dark-800/50 rounded-full border border-gray-800">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                Real-time
+              </span>
+              <span className="flex items-center gap-2 px-3 py-1 bg-dark-800/50 rounded-full border border-gray-800">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                No signup
+              </span>
+              <span className="flex items-center gap-2 px-3 py-1 bg-dark-800/50 rounded-full border border-gray-800">
+                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                Instant
+              </span>
+            </div>
+          </div>          {/* Right Side - Create Form */}
+          <div className="w-full order-2 lg:order-2">
             <div className="card">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-                Create Your List
-              </h2>
+              <div className="hidden lg:flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg relative">
+                  <ListChecks className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-100">
+                  Create Your List
+                </h2>
+              </div>
               <CreateForm />
             </div>
-          </motion.div>
-
-          {/* Features */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:order-1"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Why Choose SmartList?
-            </h2>
-            
-            <div className="space-y-6">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-white/50 transition-all duration-200"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <feature.icon className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              className="mt-8 p-6 bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl text-white"
-            >
-              <h3 className="text-lg font-semibold mb-2">How it works</h3>
-              <div className="space-y-2 text-sm text-primary-100">
-                <p>1. Create a list with a title and description</p>
-                <p>2. Share the generated link with your audience</p>
-                <p>3. Collect entries and view them in real-time</p>
-              </div>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-center mt-16 pt-8 border-t border-gray-200"
-        >
-          <p className="text-gray-600">
-            Built with ❤️ using React, Spring Boot, and MongoDB
+        {/* Simple Footer */}
+        <div className="text-center mt-8 lg:mt-16 pt-6 border-t border-gray-800/50">
+          <p className="text-gray-600 text-sm">
+            Made by VJ_2303
           </p>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
