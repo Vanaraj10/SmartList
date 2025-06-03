@@ -6,8 +6,8 @@ const getBaseURL = () => {
     // Development mode - use proxy
     return '/api';
   } else {
-    // Production mode - use environment variable or default
-    return import.meta.env.VITE_API_URL || 'https://smartlist-backend.onrender.com/api';
+    // Production mode - directly call backend API
+    return 'https://smartlist-backend.onrender.com/api';
   }
 };
 
