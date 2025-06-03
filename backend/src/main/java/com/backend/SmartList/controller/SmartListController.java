@@ -1,6 +1,8 @@
 package com.backend.SmartList.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -20,7 +22,7 @@ import com.backend.SmartList.repository.ListRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000", "https://*.netlify.app"}, allowCredentials = "true")
 public class SmartListController {
 
     private final ListRepository listRepository;
@@ -29,6 +31,16 @@ public class SmartListController {
     public SmartListController(ListRepository listRepository, EntryRepository entryRepository) {
         this.listRepository = listRepository;
         this.entryRepository = entryRepository;
+    }
+
+    // Health check endpoint for keeping the service alive
+    @GetMapping("/health")
+    public ResponseEntity<Map<String, Object>> health() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("timestamp", java.time.Instant.now());
+        response.put("service", "SmartList Backend");
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/lists")

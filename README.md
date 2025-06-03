@@ -2,6 +2,11 @@
 
 A modern web application for creating public lists and collecting entries from users with shareable links. Perfect for attendance tracking, sign-ups, and data collection.
 
+## 🌐 Live Demo
+
+- **Frontend**: [https://your-app.netlify.app](https://your-app.netlify.app) *(Update after deployment)*
+- **Backend API**: [https://your-backend.onrender.com](https://your-backend.onrender.com) *(Update after deployment)*
+
 ## 🚀 Features
 
 - **Easy List Creation**: Create public lists with just a title and description
@@ -9,6 +14,7 @@ A modern web application for creating public lists and collecting entries from u
 - **Duplicate Prevention**: Automatic detection of duplicate roll numbers
 - **Modern UI**: Beautiful, responsive design with smooth animations
 - **Live Updates**: Real-time entry display and refresh functionality
+- **Cloud Deployment**: Deployed on Netlify (frontend) and Render.com (backend)
 
 ## 🛠️ Tech Stack
 
@@ -18,17 +24,32 @@ A modern web application for creating public lists and collecting entries from u
 - **Framer Motion** for animations
 - **Lucide React** for icons
 - **Axios** for API calls
+- **Deployed on**: Netlify
 
 ### Backend
 - **Spring Boot 3.5**
 - **MongoDB** with Spring Data
 - **Maven** for dependency management
 - **Java 17**
+- **Deployed on**: Render.com (Docker)
+
+## 🚀 Quick Deployment
+
+To deploy this project to production:
+
+```powershell
+# Run setup and tests
+.\setup-deployment.ps1
+
+# Follow the detailed checklist
+# See DEPLOYMENT-CHECKLIST.md for step-by-step instructions
+```
 
 ## 📋 Prerequisites
 
 - Node.js 16+ and npm
 - Java 17+
+- Docker (for deployment)
 - MongoDB Atlas account (or local MongoDB)
 - Git
 

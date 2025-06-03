@@ -1,7 +1,18 @@
 import axios from 'axios';
 
+// Determine the API base URL based on environment
+const getBaseURL = () => {
+  if (import.meta.env.DEV) {
+    // Development mode - use proxy
+    return '/api';
+  } else {
+    // Production mode - use environment variable or default
+    return import.meta.env.VITE_API_URL || 'https://your-backend-app.onrender.com';
+  }
+};
+
 const api = axios.create({
-  baseURL: '/api', // Use relative URL - Vite proxy will handle routing to localhost:8080
+  baseURL: getBaseURL(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
