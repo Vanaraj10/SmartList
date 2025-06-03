@@ -22,7 +22,12 @@ import com.backend.SmartList.repository.ListRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000", "https://*.netlify.app"}, allowCredentials = "true")
+@CrossOrigin(origins = {
+    "http://localhost:5173", 
+    "http://localhost:3000", 
+    "https://sharelist.netlify.app",
+    "https://*.netlify.app"
+}, allowCredentials = "true")
 public class SmartListController {
 
     private final ListRepository listRepository;
