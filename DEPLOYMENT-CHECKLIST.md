@@ -38,7 +38,7 @@ git push origin main
 ```
 MONGODB_URI=mongodb+srv://vj:IWG14OY7WClMfVXE@smartlist.t62bq43.mongodb.net/smartlist?retryWrites=true&w=majority&appName=smartlist
 PORT=8080
-SPRING_PROFILES_ACTIVE=prod
+SPRING_CONFIG_ACTIVATE_ON_PROFILE=production
 ```
 
 ### Step 4: Deploy & Test

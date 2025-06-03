@@ -20,5 +20,5 @@ RUN ./mvnw clean package -DskipTests
 # Expose port
 EXPOSE 8080
 
-# Run the application
-CMD ["java", "-jar", "target/SmartList-0.0.1-SNAPSHOT.jar"]
+# Run the application with production profile
+CMD ["java", "-Dspring.config.activate.on-profile=production", "-jar", "target/SmartList-0.0.1-SNAPSHOT.jar"]
